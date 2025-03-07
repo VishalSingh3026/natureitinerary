@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <Link to="/" className="flex items-center space-x-2 mb-6">
-                <img src={logo} alt="TravelHowl Logo" className="text-2xl w-8 h-8" />
+                <img src={logo} alt="TravelHowl Logo" className="text-2xl w-40 h-25" />
             </Link>
             <p className="text-white/80 mb-6">
               Your comprehensive online travel guide providing reliable information, personalized recommendations, and insider tips.
