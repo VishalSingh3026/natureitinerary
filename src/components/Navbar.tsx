@@ -40,13 +40,13 @@ const Navbar = () => {
           to="/" 
           className="flex items-center space-x-2 transition-all duration-300 hover:text-travel-gold"
         >
-          <div className="w-10 h-10 rounded-full bg-travel-gold flex items-center justify-center overflow-hidden">
+          {/* <div className="w-10 h-10 rounded-full bg-travel-gold flex items-center justify-center overflow-hidden"> */}
             <img 
               src={logo} 
               alt="TravelHowl Logo" 
               className="w-8 h-8 object-contain"
             />
-          </div>
+          {/* </div> */}
         </Link>
 
         {/* Desktop navigation links */}
