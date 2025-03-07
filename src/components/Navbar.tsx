@@ -44,7 +44,7 @@ const Navbar = () => {
             <img 
               src={logo} 
               alt="TravelHowl Logo" 
-              className="w-8 h-8 object-contain"
+              className="w-40 h-25 object-contain"
             />
           {/* </div> */}
         </Link>
