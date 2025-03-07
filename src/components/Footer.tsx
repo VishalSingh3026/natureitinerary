@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-
+import logo from "@/logo.png"
 const Footer = () => {
   return (
     <footer className="bg-travel-dark text-white">
@@ -9,10 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <Link to="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 rounded-full bg-travel-gold flex items-center justify-center">
-                <img src="/placeholder.svg" alt="TravelHowl Logo" className="w-8 h-8" />
-              </div>
-              <span className="text-xl font-bold">TravelHowl</span>
+                <img src={logo} alt="TravelHowl Logo" className="text-2xl w-8 h-8" />
             </Link>
             <p className="text-white/80 mb-6">
               Your comprehensive online travel guide providing reliable information, personalized recommendations, and insider tips.
