@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link 
           to="/" 
-          className="flex items-center space-x-2 text-2xl font-bold text-white transition-all duration-300 hover:text-travel-gold"
+          className="flex items-center space-x-2 transition-all duration-300 hover:text-travel-gold"
         >
           <div className="w-10 h-10 rounded-full bg-travel-gold flex items-center justify-center overflow-hidden">
             <img 
@@ -47,7 +47,6 @@ const Navbar = () => {
               className="w-8 h-8 object-contain"
             />
           </div>
-          <span className="animate-fade-in">TravelHowl</span>
         </Link>
 
         {/* Desktop navigation links */}
