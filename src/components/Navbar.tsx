@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link 
           to="/" 
-          className="flex items-center space-x-2 text-2xl font-bold text-travel-dark dark:text-white transition-all duration-300 hover:text-travel-primary"
+          className="flex items-center space-x-2 text-2xl font-bold text-white transition-all duration-300 hover:text-travel-gold"
         >
           <div className="w-10 h-10 rounded-full bg-travel-gold flex items-center justify-center overflow-hidden">
             <img 
@@ -52,16 +52,16 @@ const Navbar = () => {
 
         {/* Desktop navigation links */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link to="/" className={`nav-link ${isActive('/') ? 'text-travel-primary' : ''}`}>
+          <Link to="/" className={`nav-link ${isActive('/') ? 'text-travel-gold' : ''}`}>
             Home
           </Link>
-          <Link to="/destination" className={`nav-link ${isActive('/destination') ? 'text-travel-primary' : ''}`}>
+          <Link to="/destination" className={`nav-link ${isActive('/destination') ? 'text-travel-gold' : ''}`}>
             Destinations
           </Link>
-          <Link to="/support" className={`nav-link ${isActive('/support') ? 'text-travel-primary' : ''}`}>
+          <Link to="/support" className={`nav-link ${isActive('/support') ? 'text-travel-gold' : ''}`}>
             Support
           </Link>
-          <Link to="/signin" className={`nav-link ${isActive('/signin') ? 'text-travel-primary' : ''}`}>
+          <Link to="/signin" className={`nav-link ${isActive('/signin') ? 'text-travel-gold' : ''}`}>
             Sign In
           </Link>
 
@@ -69,7 +69,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Search destinations..."
-              className="pl-10 pr-4 py-2 rounded-full text-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-travel-primary focus:border-transparent transition-all duration-300 w-48 bg-white/80 dark:bg-black/30 backdrop-blur-sm"
+              className="pl-10 pr-4 py-2 rounded-full text-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-travel-gold focus:border-transparent transition-all duration-300 w-48 bg-black/30 backdrop-blur-sm text-white"
             />
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
           </div>
@@ -77,7 +77,7 @@ const Navbar = () => {
 
         {/* Mobile menu button */}
         <button 
-          className="md:hidden rounded-full p-2 text-foreground hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+          className="md:hidden rounded-full p-2 text-foreground hover:bg-gray-800 transition-all duration-200"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,28 +90,28 @@ const Navbar = () => {
           <div className="flex flex-col space-y-4 px-6 py-8">
             <Link 
               to="/" 
-              className={`text-lg font-medium ${isActive('/') ? 'text-travel-primary' : ''}`}
+              className={`text-lg font-medium ${isActive('/') ? 'text-travel-gold' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </Link>
             <Link 
               to="/destination" 
-              className={`text-lg font-medium ${isActive('/destination') ? 'text-travel-primary' : ''}`}
+              className={`text-lg font-medium ${isActive('/destination') ? 'text-travel-gold' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Destinations
             </Link>
             <Link 
               to="/support" 
-              className={`text-lg font-medium ${isActive('/support') ? 'text-travel-primary' : ''}`}
+              className={`text-lg font-medium ${isActive('/support') ? 'text-travel-gold' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Support
             </Link>
             <Link 
               to="/signin" 
-              className={`text-lg font-medium ${isActive('/signin') ? 'text-travel-primary' : ''}`}
+              className={`text-lg font-medium ${isActive('/signin') ? 'text-travel-gold' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Sign In
@@ -121,7 +121,7 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search destinations..."
-                className="w-full pl-10 pr-4 py-2 rounded-full text-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-travel-primary focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 rounded-full text-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-travel-gold focus:border-transparent bg-black/30 text-white"
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
             </div>

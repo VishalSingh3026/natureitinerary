@@ -41,7 +41,7 @@ const Hero = () => {
         </video>
       </div>
       
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/80" />
       
       <div className="relative h-full flex flex-col items-center justify-center text-center px-6 z-10">
         <motion.div
@@ -51,7 +51,7 @@ const Hero = () => {
           className="max-w-4xl mx-auto"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white tracking-tight">
-            Discover the world with <span className="text-travel-primary">TravelHowl</span>
+            Discover the world with <span className="text-travel-gold">TravelHowl</span>
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
@@ -61,7 +61,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg"
-              className="bg-travel-primary hover:bg-travel-primary/90 text-white rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-travel-gold hover:bg-travel-gold/90 text-travel-dark rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Plan Your Trip
             </Button>
