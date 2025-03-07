@@ -28,10 +28,18 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      <div 
-        ref={parallaxRef} 
-        className="absolute inset-0 bg-hero-pattern bg-cover bg-center"
-      />
+      <div ref={parallaxRef} className="absolute inset-0">
+        <video 
+          className="w-full h-full object-cover"
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+        >
+          <source src="/src/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60" />
       
