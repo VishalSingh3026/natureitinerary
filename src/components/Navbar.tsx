@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/logo.png'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +42,7 @@ const Navbar = () => {
         >
           <div className="w-10 h-10 rounded-full bg-travel-gold flex items-center justify-center overflow-hidden">
             <img 
-              src="/placeholder.svg" 
+              src={logo} 
               alt="TravelHowl Logo" 
               className="w-8 h-8 object-contain"
             />
