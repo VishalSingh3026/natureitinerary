@@ -42,7 +42,7 @@ const Hero = () => {
         </video>
       </div>
       
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80" />
       
       <div className="relative h-full flex flex-col items-center justify-center text-center px-6 z-10">
         <motion.div
@@ -52,7 +52,7 @@ const Hero = () => {
           className="max-w-4xl mx-auto"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white tracking-tight">
-            Discover the world with <span className="text-travel-gold">TravelHowl</span>
+            Discover the world with <span className="text-travel-gold">amazing journeys</span>
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">

@@ -15,7 +15,7 @@ const banarasData = {
   name: "Banaras-Kashi",
   description: "Banaras, also known as Varanasi, is a city located on the banks of the Ganges River in the northern Indian state of Uttar Pradesh. It is one of the oldest continually inhabited cities in the world and is considered a holy city in Hinduism, Jainism, and Buddhism. Banaras is known for its numerous temples, ghats (steps leading down to the river), and vibrant cultural and religious traditions.",
   longDescription: "It has been a center of learning and culture for centuries, with many famous scholars and philosophers, including Adi Shankara and Kabir, calling it home.",
-  mainImage: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=1000",
+  mainImage: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
   rating: 4.8,
   price: "$$",
   category: "Cultural",
@@ -31,35 +31,35 @@ const banarasData = {
     "MANIKARNIKA GHAT"
   ],
   images: [
-    "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=1000",
-    "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=1000",
-    "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80&w=1000"
+    "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
+    "public/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png",
+    "public/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
   ],
   tripPlans: [
     {
       title: "2 Days/1 Night Plan",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=1000"
+      image: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png"
     },
     {
       title: "3 Days/2 Nights Plan",
-      image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=1000"
+      image: "public/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png"
     },
     {
       title: "5 Days/4 Nights Plan",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80&w=1000"
+      image: "public/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
     }
   ],
   explorations: [
     {
       title: "Ratneshwar Mahadev temple",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=1000",
+      image: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
       author: "Keshav",
       date: "Jan 18, 2024",
       content: "The temple in Manikarnika Ghat is located in front to the Tarkeshwar Mahadev Mandir built in 1795 by Ahilyabai Holkar, where Lord Shiva is said to recite the Taraka Mantra (salvation mantra)."
     },
     {
       title: "Manikarnika Ghat",
-      image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=1000",
+      image: "public/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png",
       author: "Dhey",
       date: "Jan 19, 2024",
       content: "Manikarnika Ghat is one of the oldest ghats in Varanasi and has been accorded the highest position among other ghats by the holy scriptures in Hinduism. It is believed that if a person is cremated here, he immediately attains moksha (salvation). It is bound on both sides by the Scindia Ghat and Dashashwamedh Ghat."
@@ -161,8 +161,8 @@ const BanarasDetail = () => {
       
       <div className="pt-24 md:pt-32 pb-16 md:pb-24 bg-city-pattern bg-cover bg-center">
         <div className="container mx-auto px-6">
-          <div className="bg-white/80 dark:bg-black/70 backdrop-blur-md p-8 md:p-12 rounded-xl mx-auto shadow-xl">
-            <Link to="/destination" className="inline-flex items-center text-travel-primary hover:text-travel-dark mb-6 transition-colors">
+          <div className="bg-black/80 dark:bg-black/90 backdrop-blur-md p-8 md:p-12 rounded-xl mx-auto shadow-xl">
+            <Link to="/destination" className="inline-flex items-center text-travel-primary hover:text-travel-gold mb-6 transition-colors">
               <ArrowLeft size={18} className="mr-2" />
               Back to Destinations
             </Link>
@@ -173,23 +173,23 @@ const BanarasDetail = () => {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="text-3xl md:text-5xl font-bold mb-4"
+                  className="text-3xl md:text-5xl font-bold mb-4 text-white"
                 >
                   {banarasData.name}
                 </motion.h1>
                 
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-4 text-white">
                   <div className="flex items-center mr-4">
                     <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
                     <span className="ml-1 font-medium">{banarasData.rating}</span>
                   </div>
                   <div className="flex items-center mr-4">
-                    <MapPin className="h-5 w-5 text-travel-primary" />
+                    <MapPin className="h-5 w-5 text-travel-gold" />
                     <span className="ml-1">Uttar Pradesh, India</span>
                   </div>
                   <div className="flex items-center">
                     <span className="font-medium">{banarasData.price}</span>
-                    <span className="ml-1 text-muted-foreground">Price Range</span>
+                    <span className="ml-1 text-travel-gold">Price Range</span>
                   </div>
                 </div>
                 
@@ -197,7 +197,7 @@ const BanarasDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-lg mb-6"
+                  className="text-lg mb-6 text-white"
                 >
                   {banarasData.description}
                 </motion.p>
@@ -206,7 +206,7 @@ const BanarasDetail = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="mb-6"
+                  className="mb-6 text-white"
                 >
                   {banarasData.longDescription}
                 </motion.p>
@@ -259,7 +259,7 @@ const BanarasDetail = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {banarasData.mustVisit.map((place, index) => (
                   <div key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-travel-primary rounded-full mr-2"></div>
+                    <div className="w-2 h-2 bg-travel-gold rounded-full mr-2"></div>
                     <span>{place}</span>
                   </div>
                 ))}

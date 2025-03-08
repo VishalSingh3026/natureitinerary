@@ -5,23 +5,23 @@ import DestinationCard from './DestinationCard';
 const DESTINATIONS = [
   {
     name: "Banaras",
-    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=1000",
+    image: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
     description: "Explore the spiritual heart of India on the banks of the Ganges."
   },
   {
-    name: "New York",
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=1000",
-    description: "Experience the vibrant energy of the city that never sleeps."
+    name: "Cappadocia",
+    image: "public/lovable-uploads/445cfb01-c33e-4ad2-9033-0e9a10516e00.png",
+    description: "Experience the magical hot air balloon rides over unique landscapes."
   },
   {
-    name: "Paris",
-    image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&q=80&w=1000",
-    description: "Discover the romance and elegance of the City of Light."
+    name: "Kerala",
+    image: "public/lovable-uploads/f66ff1ec-f193-4dc7-801d-1c80b5680296.png",
+    description: "Discover the scenic beauty of Kerala's backwaters and tea plantations."
   },
   {
-    name: "New Delhi",
-    image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80&w=1000",
-    description: "Immerse yourself in the rich culture and history of India's capital."
+    name: "Himalayan Trails",
+    image: "public/lovable-uploads/cf42c00d-5df0-4ef4-b4d9-3035bc38feb0.png",
+    description: "Immerse yourself in the majestic mountains and spiritual tranquility."
   }
 ];
 
