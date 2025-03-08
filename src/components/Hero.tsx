@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import video from '@/video.mp4';
 
 const Hero = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
@@ -36,7 +37,7 @@ const Hero = () => {
           loop 
           playsInline
         >
-          <source src="/src/video.mp4" type="video/mp4" />
+          <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
