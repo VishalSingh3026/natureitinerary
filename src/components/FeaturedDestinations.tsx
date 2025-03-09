@@ -5,25 +5,26 @@ import DestinationCard from './DestinationCard';
 const DESTINATIONS = [
   {
     name: "Banaras",
-    image: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
+    image: "/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
     description: "Explore the spiritual heart of India on the banks of the Ganges."
   },
   {
     name: "Cappadocia",
-    image: "public/lovable-uploads/445cfb01-c33e-4ad2-9033-0e9a10516e00.png",
+    image: "/lovable-uploads/445cfb01-c33e-4ad2-9033-0e9a10516e00.png",
     description: "Experience the magical hot air balloon rides over unique landscapes."
   },
   {
     name: "Kerala",
-    image: "public/lovable-uploads/f66ff1ec-f193-4dc7-801d-1c80b5680296.png",
+    image: "/lovable-uploads/f66ff1ec-f193-4dc7-801d-1c80b5680296.png",
     description: "Discover the scenic beauty of Kerala's backwaters and tea plantations."
   },
   {
     name: "Himalayan Trails",
-    image: "public/lovable-uploads/cf42c00d-5df0-4ef4-b4d9-3035bc38feb0.png",
+    image: "/lovable-uploads/cf42c00d-5df0-4ef4-b4d9-3035bc38feb0.png",
     description: "Immerse yourself in the majestic mountains and spiritual tranquility."
   }
 ];
+
 
 const FeaturedDestinations = () => {
   return (
