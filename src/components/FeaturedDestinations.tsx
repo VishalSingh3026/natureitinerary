@@ -20,7 +20,7 @@ const DESTINATIONS = [
   },
   {
     name: "Himalayan Trails",
-    image: "/lovable-uploads/cf42c00d-5df0-4ef4-b4d9-3035bc38feb0.png",
+    image: "/lovable-uploads/Photo Collage Himachal Pradesh Travel Vlog YouTube Thumbnail.png",
     description: "Immerse yourself in the majestic mountains and spiritual tranquility."
   }
 ];
