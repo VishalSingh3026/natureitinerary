@@ -10,7 +10,7 @@ const destinations = [
   {
     id: 1,
     name: "Banaras",
-    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80&w=1000",
+    image: "/lovable-uploads/bnsimg/pexels-narin-chauhan-16496146.jpg",
     category: "Cultural",
     rating: 4.8,
     price: "$$"
