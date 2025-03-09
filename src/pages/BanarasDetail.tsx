@@ -33,7 +33,7 @@ const banarasData = {
   images: [
     "/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
     "/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png",
-    "/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
+    "/lovable-uploads/bnsimg/pexels-ashish-kumar-pandey-2861280.jpg"
   ],
   tripPlans: [
     {
@@ -46,7 +46,7 @@ const banarasData = {
     },
     {
       title: "5 Days/4 Nights Plan",
-      image: "/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
+      image: "/lovable-uploads/bnsimg/pexels-ashish-kumar-pandey-2861280.jpg"
     }
   ],
   explorations: [
