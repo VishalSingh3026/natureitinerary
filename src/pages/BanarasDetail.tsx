@@ -15,7 +15,7 @@ const banarasData = {
   name: "Banaras-Kashi",
   description: "Banaras, also known as Varanasi, is a city located on the banks of the Ganges River in the northern Indian state of Uttar Pradesh. It is one of the oldest continually inhabited cities in the world and is considered a holy city in Hinduism, Jainism, and Buddhism. Banaras is known for its numerous temples, ghats (steps leading down to the river), and vibrant cultural and religious traditions.",
   longDescription: "It has been a center of learning and culture for centuries, with many famous scholars and philosophers, including Adi Shankara and Kabir, calling it home.",
-  mainImage: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
+  mainImage: "/lovable-uploads/WhatsApp Image 2024-02-04 at 2.04.07 AM.jpeg",
   rating: 4.8,
   price: "$$",
   category: "Cultural",
@@ -31,35 +31,35 @@ const banarasData = {
     "MANIKARNIKA GHAT"
   ],
   images: [
-    "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
-    "public/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png",
-    "public/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
+    "/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
+    "/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png",
+    "/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
   ],
   tripPlans: [
     {
       title: "2 Days/1 Night Plan",
-      image: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png"
+      image: "/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png"
     },
     {
       title: "3 Days/2 Nights Plan",
-      image: "public/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png"
+      image: "/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png"
     },
     {
       title: "5 Days/4 Nights Plan",
-      image: "public/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
+      image: "/lovable-uploads/21ab5d16-5dba-4153-88dc-979381b0c0bb.png"
     }
   ],
   explorations: [
     {
       title: "Ratneshwar Mahadev temple",
-      image: "public/lovable-uploads/12e835f9-0cb8-4e60-9ba0-b2db94e85c95.png",
+      image: "/lovable-uploads/bnsimg/pexels-a-p-14676831.jpg",
       author: "Keshav",
       date: "Jan 18, 2024",
       content: "The temple in Manikarnika Ghat is located in front to the Tarkeshwar Mahadev Mandir built in 1795 by Ahilyabai Holkar, where Lord Shiva is said to recite the Taraka Mantra (salvation mantra)."
     },
     {
       title: "Manikarnika Ghat",
-      image: "public/lovable-uploads/979480cf-f8cc-42f6-a0f7-757779e79be8.png",
+      image: "/lovable-uploads/bnsimg/pexels-stijn-dijkstra-16745037.jpg",
       author: "Dhey",
       date: "Jan 19, 2024",
       content: "Manikarnika Ghat is one of the oldest ghats in Varanasi and has been accorded the highest position among other ghats by the holy scriptures in Hinduism. It is believed that if a person is cremated here, he immediately attains moksha (salvation). It is bound on both sides by the Scindia Ghat and Dashashwamedh Ghat."
