@@ -171,7 +171,6 @@ const BanarasDetail = () => {
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     
-    // Create image preview URLs
     const imageUrls = previewImages.map(img => img.url);
     
     const newReviewItem = {
@@ -205,7 +204,6 @@ const BanarasDetail = () => {
     
     setSelectedImages(files);
     
-    // Create preview URLs
     const newPreviewImages = files.map(file => ({
       file,
       url: URL.createObjectURL(file)
@@ -271,9 +269,9 @@ const BanarasDetail = () => {
                     <div className={`flex items-center ${getCrowdAlertColor(banarasData.crowdLevel)}`}>
                       <div className="mr-2">
                         <img 
-                          src="/lovable-uploads/408fb1e9-03dc-4e50-a8e8-655bcd27d0e7.png" 
+                          src="/lovable-uploads/31d9d173-9b35-4670-b228-2c762bc35925.png" 
                           alt="Crowd Icon" 
-                          className="h-6 w-6"
+                          className="h-10 w-10"
                         />
                       </div>
                       <span className="font-medium capitalize">{banarasData.crowdLevel}</span>
