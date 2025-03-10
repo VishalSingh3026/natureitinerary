@@ -118,7 +118,7 @@ const localGuides = [
   {
     id: 1,
     name: "Krishna Jhunjunwala",
-    image: "/lovable-uploads/e111ebbf-0309-4d01-8fc5-b7810388bcf8.png",
+    image: "/lovable-uploads/bnsguide/WhatsApp Image 2024-02-08 at 12.33.54 AM (1).jpeg",
     bio: "I am a passionate and knowledgeable tour guide based in the spiritual city of Varanasi, where every corner tells a story of ancient traditions, spirituality, and cultural richness. With years of experience in guiding visitors through the maze-like lanes and along the sacred ghats of Varanasi, I am dedicated to providing an immersive and insightful experience that captures the essence of this timeless city.",
     postedBy: "travelhowl",
     postedDate: "Jan 10, 2024"
@@ -126,7 +126,7 @@ const localGuides = [
   {
     id: 2,
     name: "Harshit Srivastav",
-    image: "/lovable-uploads/a32b11e4-83d6-4288-b876-05b2b97ff604.png",
+    image: "/lovable-uploads/bnsguide/WhatsApp Image 2024-02-08 at 12.35.10 AM.jpeg",
     bio: "Born and raised in Varanasi, I have a deep connection with the city's culture and traditions. I specialize in spiritual tours that help visitors understand the philosophical aspects of Hinduism and Buddhism that originated in this ancient city.",
     postedBy: "travelhowl",
     postedDate: "Jan 12, 2024"
@@ -134,7 +134,7 @@ const localGuides = [
   {
     id: 3,
     name: "Vedang Tiwari",
-    image: "/lovable-uploads/4c62c21f-4c55-43c4-b1d8-d2b531538214.png",
+    image: "/lovable-uploads/bnsguide/WhatsApp Image 2024-02-08 at 12.29.05 AM.jpeg",
     bio: "With expertise in the history and architecture of Varanasi, I provide comprehensive tours that highlight the city's remarkable buildings and structures. I'm fluent in English, Hindi, and French, making it easy for international visitors to communicate and learn.",
     postedBy: "travelhowl",
     postedDate: "Jan 15, 2024"
