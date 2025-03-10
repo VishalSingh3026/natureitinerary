@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Camera, MapPin, Star, Users, Utensils, AlertTriangle, Upload, X } from 'lucide-react';
@@ -14,7 +13,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
-// Mock data for the Banaras destination
 const banarasData = {
   name: "Banaras-Kashi",
   description: "Banaras, also known as Varanasi, is a city located on the banks of the Ganges River in the northern Indian state of Uttar Pradesh. It is one of the oldest continually inhabited cities in the world and is considered a holy city in Hinduism, Jainism, and Buddhism. Banaras is known for its numerous temples, ghats (steps leading down to the river), and vibrant cultural and religious traditions.",
@@ -23,7 +21,7 @@ const banarasData = {
   rating: 4.8,
   price: "$$",
   category: "Cultural",
-  crowdLevel: "medium", // Added crowd level property
+  crowdLevel: "medium",
   mustVisit: [
     "KASHI VISHWANATH TEMPLE",
     "MAA ANNAPURNA TEMPLE",
@@ -72,7 +70,6 @@ const banarasData = {
   ]
 };
 
-// Mock reviews with images
 const mockReviews = [
   {
     id: 1,
@@ -112,7 +109,6 @@ const mockReviews = [
   }
 ];
 
-// Updated local guides with real photos
 const localGuides = [
   {
     id: 1,
@@ -140,7 +136,6 @@ const localGuides = [
   }
 ];
 
-// Helper function to get crowd alert color
 const getCrowdAlertColor = (level) => {
   switch(level) {
     case "low":
@@ -166,8 +161,8 @@ const BanarasDetail = () => {
   
   const [reviews, setReviews] = useState(mockReviews);
   const [showReviewForm, setShowReviewForm] = useState(false);
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [previewImages, setPreviewImages] = useState([]);
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
+  const [previewImages, setPreviewImages] = useState<{file: File, url: string}[]>([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -198,7 +193,9 @@ const BanarasDetail = () => {
     toast.success("Your review has been submitted successfully!");
   };
 
-  const handleImageSelect = (e) => {
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    
     const files = Array.from(e.target.files);
     
     if (files.length > 3) {
@@ -217,7 +214,7 @@ const BanarasDetail = () => {
     setPreviewImages(newPreviewImages);
   };
 
-  const removePreviewImage = (index) => {
+  const removePreviewImage = (index: number) => {
     const updatedPreviewImages = [...previewImages];
     updatedPreviewImages.splice(index, 1);
     setPreviewImages(updatedPreviewImages);
@@ -265,7 +262,6 @@ const BanarasDetail = () => {
                   </div>
                 </div>
                 
-                {/* CrowdAlert Feature */}
                 <div className="mb-6 p-4 rounded-lg bg-white/10 backdrop-blur-sm">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-lg font-semibold text-white flex items-center">
@@ -273,7 +269,13 @@ const BanarasDetail = () => {
                       Crowd Alert
                     </h3>
                     <div className={`flex items-center ${getCrowdAlertColor(banarasData.crowdLevel)}`}>
-                      <Users className="h-5 w-5 mr-1" />
+                      <div className="mr-2">
+                        <img 
+                          src="/lovable-uploads/408fb1e9-03dc-4e50-a8e8-655bcd27d0e7.png" 
+                          alt="Crowd Icon" 
+                          className="h-6 w-6"
+                        />
+                      </div>
                       <span className="font-medium capitalize">{banarasData.crowdLevel}</span>
                     </div>
                   </div>
@@ -510,7 +512,6 @@ const BanarasDetail = () => {
                 />
               </div>
               
-              {/* Image Upload */}
               <div className="mb-6">
                 <Label htmlFor="images" className="mb-2">Upload Images (Max 3)</Label>
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
@@ -594,7 +595,6 @@ const BanarasDetail = () => {
                   </div>
                   <p className="text-muted-foreground mb-4">{review.comment}</p>
                   
-                  {/* Review Images */}
                   {review.images && review.images.length > 0 && (
                     <div className="grid grid-cols-3 gap-2 mt-2">
                       {review.images.map((image, index) => (
