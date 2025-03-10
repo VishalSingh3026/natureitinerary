@@ -574,86 +574,82 @@ const BanarasDetail = () => {
         
         <div className="py-4 px-2 bg-travel-dark/90 rounded-xl overflow-hidden">
           <div className="mb-4 flex justify-between items-center px-4">
-            <div className="text-white text-sm">
-              ✅ Uses Swiper.js for smooth automatic scrolling<br/>
-              ✅ Autoplay enabled (moves from right to left every 2 seconds)
-            </div>
-            <div className="text-travel-gold text-sm">
-              ✅ Customizable (swipe for more reviews)
-            </div>
+            
+           
           </div>
           
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-            }}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            pagination={{ clickable: true }}
-            className="review-swiper"
-          >
-            {reviews.map((review) => (
-              <SwiperSlide key={review.id}>
-                <motion.div 
-                  className="bg-gray-900 rounded-xl p-6 shadow-md border border-gray-700 h-full flex flex-col"
-                >
-                  <div className="flex items-start">
-                    <Avatar className="h-10 w-10 mr-4">
-                      <AvatarImage src={review.avatar} alt={review.name} />
-                      <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-semibold text-white">{review.name}</h3>
-                        <span className="text-sm text-gray-400">{review.date}</span>
-                      </div>
-                      <div className="flex items-center mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className={`h-4 w-4 ${
-                              i < review.rating 
-                                ? 'text-yellow-400 fill-yellow-400' 
-                                : 'text-gray-600'
-                            }`} 
-                          />
-                        ))}
-                      </div>
-                      <p className="text-gray-300 mb-4">{review.comment}</p>
-                    </div>
-                  </div>
-                  
-                  {review.images && review.images.length > 0 && (
-                    <div className="mt-auto">
-                      <div className="grid grid-cols-1 gap-2">
-                        {review.images.map((image, index) => (
-                          <div key={index} className="rounded-md overflow-hidden h-48">
-                            <img 
-                              src={image} 
-                              alt={`Review image ${index + 1}`} 
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <Swiper
+  modules={[Autoplay, Pagination]}
+  spaceBetween={30}
+  slidesPerView={1}
+  breakpoints={{
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  }}
+  autoplay={{
+    delay: 2000,
+    disableOnInteraction: false,
+  }}
+  pagination={{ clickable: true }}
+  className="review-swiper"
+>
+  {reviews.map((review) => (
+    <SwiperSlide key={review.id} className="h-full">
+      <motion.div 
+        className="bg-gray-900 rounded-xl p-6 shadow-md border border-gray-700 h-full flex flex-col"
+      >
+        <div className="flex items-start flex-grow">
+          <Avatar className="h-10 w-10 mr-4">
+            <AvatarImage src={review.avatar} alt={review.name} />
+            <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+          <div className="flex-1">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="font-semibold text-white">{review.name}</h3>
+              <span className="text-sm text-gray-400">{review.date}</span>
+            </div>
+            <div className="flex items-center mb-3">
+              {[...Array(5)].map((_, i) => (
+                <Star 
+                  key={i} 
+                  className={`h-4 w-4 ${
+                    i < review.rating 
+                      ? 'text-yellow-400 fill-yellow-400' 
+                      : 'text-gray-600'
+                  }`} 
+                />
+              ))}
+            </div>
+            <p className="text-gray-300 mb-4">{review.comment}</p>
+          </div>
+        </div>
+        
+        {review.images && review.images.length > 0 && (
+          <div className="mt-auto">
+            <div className="grid grid-cols-1 gap-2">
+              {review.images.map((image, index) => (
+                <div key={index} className="rounded-md overflow-hidden h-48">
+                  <img 
+                    src={image} 
+                    alt={`Review image ${index + 1}`} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
         </div>
       </div>
       
