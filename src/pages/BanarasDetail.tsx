@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, MapPin, Star, Users, Utensils } from 'lucide-react';
+import { ArrowLeft, Calendar, Camera, MapPin, Star, Users, Utensils, AlertTriangle, Upload, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,6 +9,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 
 // Mock data for the Banaras destination
 const banarasData = {
@@ -19,6 +23,7 @@ const banarasData = {
   rating: 4.8,
   price: "$$",
   category: "Cultural",
+  crowdLevel: "medium", // Added crowd level property
   mustVisit: [
     "KASHI VISHWANATH TEMPLE",
     "MAA ANNAPURNA TEMPLE",
@@ -67,7 +72,7 @@ const banarasData = {
   ]
 };
 
-// Mock reviews
+// Mock reviews with images
 const mockReviews = [
   {
     id: 1,
@@ -75,7 +80,8 @@ const mockReviews = [
     avatar: "/placeholder.svg",
     rating: 5,
     date: "Feb 10, 2024",
-    comment: "Our guided tour with Krishna Jhunjunwala was the highlight of our trip to Varanasi. His deep knowledge of the city's history and culture, coupled with his friendly demeanor, made for an unforgettable experience."
+    comment: "Our guided tour with Krishna Jhunjunwala was the highlight of our trip to Varanasi. His deep knowledge of the city's history and culture, coupled with his friendly demeanor, made for an unforgettable experience.",
+    images: ["/lovable-uploads/bnsimg/pexels-a-p-14676831.jpg"]
   },
   {
     id: 2,
@@ -83,7 +89,8 @@ const mockReviews = [
     avatar: "/placeholder.svg",
     rating: 4,
     date: "Feb 5, 2024",
-    comment: "I highly recommend Harshit Srivastav to anyone visiting Varanasi. His passion for the city is infectious, and he went above and beyond to ensure we had a memorable and enriching experience."
+    comment: "I highly recommend Harshit Srivastav to anyone visiting Varanasi. His passion for the city is infectious, and he went above and beyond to ensure we had a memorable and enriching experience.",
+    images: []
   },
   {
     id: 3,
@@ -91,7 +98,8 @@ const mockReviews = [
     avatar: "/placeholder.svg",
     rating: 5,
     date: "Jan 28, 2024",
-    comment: "The sunrise boat ride along the Ganges was magical. Watching the city come to life as the sun rose was an experience I'll never forget. The ghats were beautiful and our guide was very knowledgeable."
+    comment: "The sunrise boat ride along the Ganges was magical. Watching the city come to life as the sun rose was an experience I'll never forget. The ghats were beautiful and our guide was very knowledgeable.",
+    images: ["/lovable-uploads/bnsimg/pexels-stijn-dijkstra-16745037.jpg"]
   },
   {
     id: 4,
@@ -99,60 +107,124 @@ const mockReviews = [
     avatar: "/placeholder.svg",
     rating: 4,
     date: "Jan 15, 2024",
-    comment: "Varanasi is unlike any place I've ever visited. The spiritual energy is palpable. The evening Ganga Aarti ceremony at Dashashwamedh Ghat was breathtaking and moving. A must-see!"
+    comment: "Varanasi is unlike any place I've ever visited. The spiritual energy is palpable. The evening Ganga Aarti ceremony at Dashashwamedh Ghat was breathtaking and moving. A must-see!",
+    images: []
   }
 ];
 
-// Mock local guides
+// Updated local guides with real photos
 const localGuides = [
   {
     id: 1,
     name: "Krishna Jhunjunwala",
-    image: "/placeholder.svg",
-    bio: "I am a passionate and knowledgeable tour guide based in the spiritual city of Varanasi, where every corner tells a story of ancient traditions, spirituality, and cultural richness. With years of experience in guiding visitors through the maze-like lanes and along the sacred ghats of Varanasi, I am dedicated to providing an immersive and insightful experience that captures the essence of this timeless city."
+    image: "/lovable-uploads/e111ebbf-0309-4d01-8fc5-b7810388bcf8.png",
+    bio: "I am a passionate and knowledgeable tour guide based in the spiritual city of Varanasi, where every corner tells a story of ancient traditions, spirituality, and cultural richness. With years of experience in guiding visitors through the maze-like lanes and along the sacred ghats of Varanasi, I am dedicated to providing an immersive and insightful experience that captures the essence of this timeless city.",
+    postedBy: "travelhowl",
+    postedDate: "Jan 10, 2024"
   },
   {
     id: 2,
     name: "Harshit Srivastav",
-    image: "/placeholder.svg",
-    bio: "Born and raised in Varanasi, I have a deep connection with the city's culture and traditions. I specialize in spiritual tours that help visitors understand the philosophical aspects of Hinduism and Buddhism that originated in this ancient city."
+    image: "/lovable-uploads/a32b11e4-83d6-4288-b876-05b2b97ff604.png",
+    bio: "Born and raised in Varanasi, I have a deep connection with the city's culture and traditions. I specialize in spiritual tours that help visitors understand the philosophical aspects of Hinduism and Buddhism that originated in this ancient city.",
+    postedBy: "travelhowl",
+    postedDate: "Jan 12, 2024"
   },
   {
     id: 3,
     name: "Vedang Tiwari",
-    image: "/placeholder.svg",
-    bio: "With expertise in the history and architecture of Varanasi, I provide comprehensive tours that highlight the city's remarkable buildings and structures. I'm fluent in English, Hindi, and French, making it easy for international visitors to communicate and learn."
+    image: "/lovable-uploads/4c62c21f-4c55-43c4-b1d8-d2b531538214.png",
+    bio: "With expertise in the history and architecture of Varanasi, I provide comprehensive tours that highlight the city's remarkable buildings and structures. I'm fluent in English, Hindi, and French, making it easy for international visitors to communicate and learn.",
+    postedBy: "travelhowl",
+    postedDate: "Jan 15, 2024"
   }
 ];
+
+// Helper function to get crowd alert color
+const getCrowdAlertColor = (level) => {
+  switch(level) {
+    case "low":
+      return "text-green-500";
+    case "medium":
+      return "text-yellow-500";
+    case "high":
+      return "text-orange-500";
+    case "very high":
+      return "text-red-500";
+    default:
+      return "text-green-500";
+  }
+};
 
 const BanarasDetail = () => {
   const [newReview, setNewReview] = useState({
     name: "",
     rating: 5,
-    comment: ""
+    comment: "",
+    images: []
   });
   
   const [reviews, setReviews] = useState(mockReviews);
   const [showReviewForm, setShowReviewForm] = useState(false);
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [previewImages, setPreviewImages] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleReviewSubmit = (e: React.FormEvent) => {
+  const handleReviewSubmit = (e) => {
     e.preventDefault();
+    
+    // Create image preview URLs
+    const imageUrls = previewImages.map(img => img.url);
+    
     const newReviewItem = {
       id: reviews.length + 1,
       name: newReview.name || "Anonymous",
       avatar: "/placeholder.svg",
       rating: newReview.rating,
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-      comment: newReview.comment
+      comment: newReview.comment,
+      images: imageUrls
     };
     
     setReviews([newReviewItem, ...reviews]);
-    setNewReview({ name: "", rating: 5, comment: "" });
+    setNewReview({ name: "", rating: 5, comment: "", images: [] });
+    setSelectedImages([]);
+    setPreviewImages([]);
     setShowReviewForm(false);
+    
+    toast.success("Your review has been submitted successfully!");
+  };
+
+  const handleImageSelect = (e) => {
+    const files = Array.from(e.target.files);
+    
+    if (files.length > 3) {
+      toast.error("You can only upload up to 3 images");
+      return;
+    }
+    
+    setSelectedImages(files);
+    
+    // Create preview URLs
+    const newPreviewImages = files.map(file => ({
+      file,
+      url: URL.createObjectURL(file)
+    }));
+    
+    setPreviewImages(newPreviewImages);
+  };
+
+  const removePreviewImage = (index) => {
+    const updatedPreviewImages = [...previewImages];
+    updatedPreviewImages.splice(index, 1);
+    setPreviewImages(updatedPreviewImages);
+    
+    const updatedSelectedImages = [...selectedImages];
+    updatedSelectedImages.splice(index, 1);
+    setSelectedImages(updatedSelectedImages);
   };
 
   return (
@@ -191,6 +263,23 @@ const BanarasDetail = () => {
                     <span className="font-medium">{banarasData.price}</span>
                     <span className="ml-1 text-travel-gold">Price Range</span>
                   </div>
+                </div>
+                
+                {/* CrowdAlert Feature */}
+                <div className="mb-6 p-4 rounded-lg bg-white/10 backdrop-blur-sm">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg font-semibold text-white flex items-center">
+                      <AlertTriangle className="mr-2 h-5 w-5 text-travel-gold" />
+                      Crowd Alert
+                    </h3>
+                    <div className={`flex items-center ${getCrowdAlertColor(banarasData.crowdLevel)}`}>
+                      <Users className="h-5 w-5 mr-1" />
+                      <span className="font-medium capitalize">{banarasData.crowdLevel}</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-white/80">
+                    Current crowd levels at popular attractions. Plan your visit accordingly to avoid peak hours.
+                  </p>
                 </div>
                 
                 <motion.p 
@@ -302,22 +391,22 @@ const BanarasDetail = () => {
           <TabsContent value="guides" className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {localGuides.map((guide, index) => (
-                <Card key={index}>
+                <Card key={index} className="overflow-hidden">
+                  <div className="w-full h-64 overflow-hidden">
+                    <img 
+                      src={guide.image} 
+                      alt={guide.name} 
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
                   <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Avatar className="h-12 w-12 mr-4">
-                        <AvatarImage src={guide.image} alt={guide.name} />
-                        <AvatarFallback>{guide.name.charAt(0)}</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <h3 className="font-semibold">{guide.name}</h3>
-                        <div className="flex items-center text-sm text-muted-foreground">
-                          <MapPin className="h-3 w-3 mr-1" />
-                          <span>Local Guide</span>
-                        </div>
-                      </div>
+                    <h3 className="text-xl font-semibold mb-2">{guide.name}</h3>
+                    <div className="flex items-center text-sm text-muted-foreground mb-4">
+                      <span>Posted by {guide.postedBy}</span>
+                      <span className="mx-2">•</span>
+                      <span>{guide.postedDate}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-4">{guide.bio}</p>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-4">{guide.bio}</p>
                     <Button size="sm" className="w-full bg-travel-primary hover:bg-travel-dark">
                       Contact Guide
                     </Button>
@@ -378,18 +467,16 @@ const BanarasDetail = () => {
             <form onSubmit={handleReviewSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">Your Name</label>
-                  <input
-                    type="text"
+                  <Label htmlFor="name" className="mb-2">Your Name</Label>
+                  <Input
                     id="name"
                     value={newReview.name}
                     onChange={(e) => setNewReview({...newReview, name: e.target.value})}
-                    className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-travel-primary"
                     placeholder="Enter your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="rating" className="block text-sm font-medium mb-2">Rating</label>
+                  <Label htmlFor="rating" className="mb-2">Rating</Label>
                   <div className="flex space-x-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -410,18 +497,61 @@ const BanarasDetail = () => {
                   </div>
                 </div>
               </div>
+              
               <div className="mb-6">
-                <label htmlFor="comment" className="block text-sm font-medium mb-2">Your Review</label>
-                <textarea
+                <Label htmlFor="comment" className="mb-2">Your Review</Label>
+                <Textarea
                   id="comment"
                   value={newReview.comment}
                   onChange={(e) => setNewReview({...newReview, comment: e.target.value})}
                   rows={4}
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-travel-primary"
                   placeholder="Share your experience..."
                   required
-                ></textarea>
+                />
               </div>
+              
+              {/* Image Upload */}
+              <div className="mb-6">
+                <Label htmlFor="images" className="mb-2">Upload Images (Max 3)</Label>
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+                  <div className="flex items-center justify-center">
+                    <label htmlFor="image-upload" className="cursor-pointer flex flex-col items-center">
+                      <Camera className="h-10 w-10 text-gray-400" />
+                      <span className="mt-2 text-sm text-gray-500">Click to upload</span>
+                      <Input
+                        id="image-upload"
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        className="hidden"
+                        onChange={handleImageSelect}
+                      />
+                    </label>
+                  </div>
+                  
+                  {previewImages.length > 0 && (
+                    <div className="mt-4 grid grid-cols-3 gap-4">
+                      {previewImages.map((img, index) => (
+                        <div key={index} className="relative">
+                          <img
+                            src={img.url}
+                            alt={`Preview ${index + 1}`}
+                            className="w-full h-24 object-cover rounded-md"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removePreviewImage(index)}
+                            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              
               <div className="flex justify-end">
                 <Button type="submit" className="bg-travel-primary hover:bg-travel-dark">
                   Submit Review
@@ -462,7 +592,22 @@ const BanarasDetail = () => {
                       />
                     ))}
                   </div>
-                  <p className="text-muted-foreground">{review.comment}</p>
+                  <p className="text-muted-foreground mb-4">{review.comment}</p>
+                  
+                  {/* Review Images */}
+                  {review.images && review.images.length > 0 && (
+                    <div className="grid grid-cols-3 gap-2 mt-2">
+                      {review.images.map((image, index) => (
+                        <div key={index} className="rounded-md overflow-hidden h-24">
+                          <img 
+                            src={image} 
+                            alt={`Review image ${index + 1}`} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
