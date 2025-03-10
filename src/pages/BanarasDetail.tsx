@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Camera, MapPin, Star, Users, Utensils, AlertTriangle, Upload, X } from 'lucide-react';
@@ -567,7 +568,7 @@ const BanarasDetail = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700"
             >
               <div className="flex items-start">
                 <Avatar className="h-10 w-10 mr-4">
@@ -576,7 +577,7 @@ const BanarasDetail = () => {
                 </Avatar>
                 <div className="flex-1">
                   <div className="flex justify-between items-center mb-2">
-                    <h3 className="font-semibold">{review.name}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">{review.name}</h3>
                     <span className="text-sm text-muted-foreground">{review.date}</span>
                   </div>
                   <div className="flex items-center mb-3">
@@ -591,7 +592,7 @@ const BanarasDetail = () => {
                       />
                     ))}
                   </div>
-                  <p className="text-muted-foreground mb-4">{review.comment}</p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{review.comment}</p>
                   
                   {review.images && review.images.length > 0 && (
                     <div className="grid grid-cols-3 gap-2 mt-2">
