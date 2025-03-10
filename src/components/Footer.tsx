@@ -21,10 +21,10 @@ const Footer = () => {
               <a href="#" className="text-white/70 hover:text-travel-gold transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-white/70 hover:text-travel-gold transition-colors">
+              <a href="https://www.instagram.com/travelhowl_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="text-white/70 hover:text-travel-gold transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-white/70 hover:text-travel-gold transition-colors">
+              <a href="www.linkedin.com/in/vishal-singh-chauhan-4a0273239" className="text-white/70 hover:text-travel-gold transition-colors">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -77,11 +77,11 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 text-travel-gold shrink-0 mt-0.5" />
-                <span className="text-white/70">123 Travel Street, Wanderlust City, WC 12345</span>
+                <span className="text-white/70">Friends Colony,Etawah-206001</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-2 text-travel-gold" />
-                <span className="text-white/70">+1 (123) 456-7890</span>
+                <span className="text-white/70">+91 9412******</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-2 text-travel-gold" />
