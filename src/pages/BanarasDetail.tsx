@@ -573,12 +573,9 @@ const BanarasDetail = () => {
         )}
         
         <div className="py-4 px-2 bg-travel-dark/90 rounded-xl overflow-hidden">
-          <div className="mb-4 flex justify-between items-center px-4">
-            
-           
-          </div>
           
-        <Swiper
+          
+ <Swiper
   modules={[Autoplay, Pagination]}
   spaceBetween={30}
   slidesPerView={1}
