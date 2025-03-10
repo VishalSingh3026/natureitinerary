@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Camera, MapPin, Star, Users, Utensils, AlertTriangle, Upload, X } from 'lucide-react';
@@ -13,6 +12,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 const banarasData = {
   name: "Banaras-Kashi",
@@ -449,12 +453,17 @@ const BanarasDetail = () => {
       <div className="container mx-auto px-6 py-8 mb-16">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold">Recent Reviews</h2>
-          <Button 
-            onClick={() => setShowReviewForm(!showReviewForm)}
-            className="bg-travel-primary hover:bg-travel-dark"
-          >
-            {showReviewForm ? 'Cancel' : 'Write a Review'}
-          </Button>
+          <div className="flex space-x-2 items-center">
+            <div className="text-sm text-travel-gold bg-travel-dark/80 px-3 py-1 rounded-full">
+              ✅ Automatic scrolling
+            </div>
+            <Button 
+              onClick={() => setShowReviewForm(!showReviewForm)}
+              className="bg-travel-primary hover:bg-travel-dark"
+            >
+              {showReviewForm ? 'Cancel' : 'Write a Review'}
+            </Button>
+          </div>
         </div>
         
         {showReviewForm && (
@@ -462,22 +471,23 @@ const BanarasDetail = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="mb-8 bg-travel-light/30 rounded-xl p-6"
+            className="mb-8 bg-travel-dark/80 rounded-xl p-6 text-white"
           >
             <h3 className="text-xl font-semibold mb-4">Share Your Experience</h3>
             <form onSubmit={handleReviewSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <Label htmlFor="name" className="mb-2">Your Name</Label>
+                  <Label htmlFor="name" className="mb-2 text-white">Your Name</Label>
                   <Input
                     id="name"
                     value={newReview.name}
                     onChange={(e) => setNewReview({...newReview, name: e.target.value})}
                     placeholder="Enter your name"
+                    className="bg-travel-light/10 border-travel-light/20 text-white placeholder:text-white/50"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="rating" className="mb-2">Rating</Label>
+                  <Label htmlFor="rating" className="mb-2 text-white">Rating</Label>
                   <div className="flex space-x-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -500,7 +510,7 @@ const BanarasDetail = () => {
               </div>
               
               <div className="mb-6">
-                <Label htmlFor="comment" className="mb-2">Your Review</Label>
+                <Label htmlFor="comment" className="mb-2 text-white">Your Review</Label>
                 <Textarea
                   id="comment"
                   value={newReview.comment}
@@ -508,16 +518,17 @@ const BanarasDetail = () => {
                   rows={4}
                   placeholder="Share your experience..."
                   required
+                  className="bg-travel-light/10 border-travel-light/20 text-white placeholder:text-white/50"
                 />
               </div>
               
               <div className="mb-6">
-                <Label htmlFor="images" className="mb-2">Upload Images (Max 3)</Label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+                <Label htmlFor="images" className="mb-2 text-white">Upload Images (Max 3)</Label>
+                <div className="border-2 border-dashed border-gray-500 rounded-lg p-4">
                   <div className="flex items-center justify-center">
                     <label htmlFor="image-upload" className="cursor-pointer flex flex-col items-center">
                       <Camera className="h-10 w-10 text-gray-400" />
-                      <span className="mt-2 text-sm text-gray-500">Click to upload</span>
+                      <span className="mt-2 text-sm text-gray-300">Click to upload</span>
                       <Input
                         id="image-upload"
                         type="file"
@@ -561,56 +572,88 @@ const BanarasDetail = () => {
           </motion.div>
         )}
         
-        <div className="space-y-6">
-          {reviews.map((review) => (
-            <motion.div 
-              key={review.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700"
-            >
-              <div className="flex items-start">
-                <Avatar className="h-10 w-10 mr-4">
-                  <AvatarImage src={review.avatar} alt={review.name} />
-                  <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <div className="flex-1">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100">{review.name}</h3>
-                    <span className="text-sm text-muted-foreground">{review.date}</span>
+        <div className="py-4 px-2 bg-travel-dark/90 rounded-xl overflow-hidden">
+          <div className="mb-4 flex justify-between items-center px-4">
+            <div className="text-white text-sm">
+              ✅ Uses Swiper.js for smooth automatic scrolling<br/>
+              ✅ Autoplay enabled (moves from right to left every 2 seconds)
+            </div>
+            <div className="text-travel-gold text-sm">
+              ✅ Customizable (swipe for more reviews)
+            </div>
+          </div>
+          
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            pagination={{ clickable: true }}
+            className="review-swiper"
+          >
+            {reviews.map((review) => (
+              <SwiperSlide key={review.id}>
+                <motion.div 
+                  className="bg-gray-900 rounded-xl p-6 shadow-md border border-gray-700 h-full flex flex-col"
+                >
+                  <div className="flex items-start">
+                    <Avatar className="h-10 w-10 mr-4">
+                      <AvatarImage src={review.avatar} alt={review.name} />
+                      <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-center mb-2">
+                        <h3 className="font-semibold text-white">{review.name}</h3>
+                        <span className="text-sm text-gray-400">{review.date}</span>
+                      </div>
+                      <div className="flex items-center mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            className={`h-4 w-4 ${
+                              i < review.rating 
+                                ? 'text-yellow-400 fill-yellow-400' 
+                                : 'text-gray-600'
+                            }`} 
+                          />
+                        ))}
+                      </div>
+                      <p className="text-gray-300 mb-4">{review.comment}</p>
+                    </div>
                   </div>
-                  <div className="flex items-center mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`h-4 w-4 ${
-                          i < review.rating 
-                            ? 'text-yellow-400 fill-yellow-400' 
-                            : 'text-gray-300'
-                        }`} 
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">{review.comment}</p>
                   
                   {review.images && review.images.length > 0 && (
-                    <div className="grid grid-cols-3 gap-2 mt-2">
-                      {review.images.map((image, index) => (
-                        <div key={index} className="rounded-md overflow-hidden h-24">
-                          <img 
-                            src={image} 
-                            alt={`Review image ${index + 1}`} 
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ))}
+                    <div className="mt-auto">
+                      <div className="grid grid-cols-1 gap-2">
+                        {review.images.map((image, index) => (
+                          <div key={index} className="rounded-md overflow-hidden h-48">
+                            <img 
+                              src={image} 
+                              alt={`Review image ${index + 1}`} 
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
       
